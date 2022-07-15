@@ -1,8 +1,31 @@
 import React from 'react'
 import Image from 'next/image'
 import mypic from '../public/dp.jpg'
+import { ReactNode } from 'react';
+import {
+  Link,
+  Button,
+  useColorModeValue,
+  useColorMode,
+} from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+
+const NavLink = ({ children }: { children: ReactNode }) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={'md'}
+    _hover={{
+      textDecoration: 'none',
+      bg: useColorModeValue('gray.200', 'gray.700'),
+    }}
+    href={'#'}>
+    {children}
+  </Link>
+);
 
 const Sidebar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <div>
       <div className='flex justify-center p-4'>
@@ -20,6 +43,27 @@ const Sidebar = () => {
         <div className='flex justify-center font'>
           <h2>Arpan M with ❤ </h2>
         </div>
+
+        <div>
+          I am into
+          ....
+        </div>
+
+        <div>
+          Email,address
+        </div>
+
+        <div>
+          <button>
+            Contact Me
+          </button>
+        </div>
+
+      <div>
+        <Button onClick={toggleColorMode}>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </Button>
+      </div>
         
     </div>
   )
